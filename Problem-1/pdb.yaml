@@ -1,0 +1,10 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+      name: scrapping-pdb
+      namespace: scrapper
+spec:
+        minAvailable: 2
+        selector:
+               matchLabels:
+                app: scrapper

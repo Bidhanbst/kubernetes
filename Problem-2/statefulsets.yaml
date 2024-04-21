@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: scrapper
+  labels:
+    app: scrapper
+spec:
+  serviceName: scrapper
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: scrapper
+    spec:
+      containers:
+        - name: scrapper
+          image: artifactory.grepsr.com/scrapper:v1
+          volumeMounts:
+            - name: smb
+              mountPath: "/mnt"
+      volumes:
+        - name: smb
+          persistentVolumeClaim:
+            claimName: pvc-smb
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: scrapper
