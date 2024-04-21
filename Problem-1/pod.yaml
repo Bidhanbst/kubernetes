@@ -11,10 +11,10 @@ spec:
   # Define resource requirements
     resources:
       limits:
-            cpu: 2
+            cpu: 200m
             memory: 64m
       requests:
-            cpu: 2
+            cpu: 200m
             memory: 1Gb
       
   # Define node affinity
